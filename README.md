@@ -17,7 +17,6 @@ This repository contains a single integrated Bash script, `full_setup_and_benchm
     - FP16 (half-precision floating point)
     - Simulated FP8 (8-bit floating point)
     - INT8 (8-bit integer arithmetic)
-    - Simulated INT7 (7-bit integer arithmetic)
     - Memory throughput (memclock)
     - Compute performance (coreclock)
     
