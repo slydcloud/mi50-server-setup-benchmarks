@@ -230,9 +230,10 @@ mbw 128 | tee -a "$BENCH_LOG_FILE"
 echo "" | tee -a "$BENCH_LOG_FILE"
 
 echo "=== Running ROCm Bandwidth Test (Unidirectional All Devices Test) ===" | tee -a "$BENCH_LOG_FILE"
-if [ -d "/opt/rocm-5.7.1/rocm-bandwidth-test/build" ]; then
-  pushd /opt/rocm-5.7.1/rocm-bandwidth-test/build > /dev/null
-  ./rocm-bandwidth-test -a | tee -a "$BENCH_LOG_FILE"
+ROCM_BW_DIR="/opt/rocm-5.7.1/rocm-bandwidth-test/build"
+if [ -d "$ROCM_BW_DIR" ]; then
+  pushd "$ROCM_BW_DIR" > /dev/null
+  ./rocm-bandwidth-test -a | tee -a "$BENCH_LOG_FILE" || echo "ROCm Bandwidth Test encountered an error." | tee -a "$BENCH_LOG_FILE"
   popd > /dev/null
 else
   echo "ROCm Bandwidth Test build directory not found. Skipping." | tee -a "$BENCH_LOG_FILE"
